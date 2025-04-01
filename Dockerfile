@@ -1,6 +1,5 @@
 FROM python:3.11-slim
 
-# Installa le dipendenze necessarie per Chromium
 RUN apt-get update && apt-get install -y \
     wget \
     ca-certificates \
@@ -11,8 +10,8 @@ RUN apt-get update && apt-get install -y \
     xdg-utils \
     chromium \
     unzip \
-    jq \  # <== AGGIUNTO jq
-    && rm -rf /var/lib/apt/lists/*
+    jq && \
+    rm -rf /var/lib/apt/lists/*
 
 # Imposta variabili per il binary di Chromium
 ENV CHROMIUM_PATH=/usr/bin/chromium
