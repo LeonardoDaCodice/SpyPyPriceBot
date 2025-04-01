@@ -7,7 +7,7 @@ WORKDIR /app
 # Installa le dipendenze di sistema necessarie per Chromium e ChromeDriver
 RUN apt-get update && \
     apt-get install -y \
-    chromium=114.0.5735.90-1 \
+    chromium \
     libnss3 \
     libgdk-pixbuf2.0-0 \
     libatk-bridge2.0-0 \
