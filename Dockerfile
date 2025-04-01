@@ -7,10 +7,15 @@ WORKDIR /app
 # Copia i file del progetto nella directory di lavoro
 COPY . /app
 
+# Installa le dipendenze
 RUN apt-get update && apt-get install -y wget unzip && \
     wget -O /tmp/chromedriver.zip https://storage.googleapis.com/chrome-for-testing-public/134.0.6998.117/linux64/chromedriver-linux64.zip && \
     unzip /tmp/chromedriver.zip -d /usr/local/bin/ && \
     rm /tmp/chromedriver.zip
+
+# Installa le dipendenze di Python
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Imposta le variabili di ambiente
 ENV PYTHONUNBUFFERED 1
