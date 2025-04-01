@@ -1,8 +1,7 @@
 FROM python:3.11-slim
 
-# Installa una versione specifica di Chromium
-RUN apt-get update && \
-    apt-get install -y \
+# Installa le dipendenze necessarie per Chromium
+RUN apt-get update && apt-get install -y \
     wget \
     ca-certificates \
     fonts-liberation \
@@ -10,8 +9,8 @@ RUN apt-get update && \
     libnss3 \
     lsb-release \
     xdg-utils \
-    chromium=114.* && \
-    apt-get clean
+    chromium \
+    && rm -rf /var/lib/apt/lists/*
 
 # Imposta variabili per il binary di Chromium
 ENV CHROMIUM_PATH=/usr/bin/chromium
@@ -19,6 +18,10 @@ ENV CHROMIUM_PATH=/usr/bin/chromium
 # Installa le dipendenze Python
 COPY requirements.txt /app/requirements.txt
 RUN pip install --no-cache-dir -r /app/requirements.txt
+
+# Installa chromedriver tramite selenium
+RUN pip install --no-cache-dir selenium && \
+    python -c "from selenium import webdriver; driver = webdriver.Chrome(); driver.quit()"
 
 # Copia il codice dell'applicazione
 COPY . /app
