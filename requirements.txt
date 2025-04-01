@@ -1,5 +1,4 @@
-aiogram~=3.19.0
 requests
 selenium~=4.30.0
-webdriver-manager==4.1.0  # Usa la versione più recente
+webdriver-manager==4.0.2
 python-dotenv~=1.1.0
