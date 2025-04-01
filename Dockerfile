@@ -10,7 +10,15 @@ RUN apt-get update && apt-get install -y \
     lsb-release \
     xdg-utils \
     chromium \
+    unzip \
     && rm -rf /var/lib/apt/lists/*
+
+# Scarica e installa la versione corretta di chromedriver (versione 134)
+RUN CHROMIUM_VERSION=$(chromium --version | awk '{print $2}' | cut -d'.' -f1-3) && \
+    wget -q "https://chromedriver.storage.googleapis.com/134.0.5739.90/chromedriver_linux64.zip" -O /chromedriver.zip && \
+    unzip /chromedriver.zip -d /usr/local/bin && \
+    chmod +x /usr/local/bin/chromedriver && \
+    rm /chromedriver.zip
 
 # Imposta variabili per il binary di Chromium
 ENV CHROMIUM_PATH=/usr/bin/chromium
