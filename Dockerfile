@@ -17,9 +17,10 @@ RUN apt-get update && apt-get install -y \
 ENV CHROMIUM_PATH=/usr/bin/chromium
 ENV PATH="/usr/local/bin:$PATH"
 
-# Scarica e installa ChromeDriver
-RUN CHROMIUM_VERSION=$(chromium --version | awk '{print $2}' | cut -d'.' -f1) && \
-    wget -q "https://chromedriver.storage.googleapis.com/${CHROMIUM_VERSION}.0.5735.90/chromedriver_linux64.zip" -O /chromedriver.zip && \
+# Scarica e installa ChromeDriver per la versione corretta di Chromium
+RUN CHROMIUM_VERSION=$(chromium --version | awk '{print $2}' | cut -d'.' -f1-3) && \
+    echo "Chromium Version: $CHROMIUM_VERSION" && \
+    wget -q "https://chromedriver.storage.googleapis.com/${CHROMIUM_VERSION}/chromedriver_linux64.zip" -O /chromedriver.zip && \
     unzip /chromedriver.zip -d /usr/local/bin && \
     chmod +x /usr/local/bin/chromedriver && \
     rm /chromedriver.zip
