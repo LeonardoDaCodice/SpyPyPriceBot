@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y \
     xdg-utils \
     chromium \
     unzip \
+    jq \  # <== AGGIUNTO jq
     && rm -rf /var/lib/apt/lists/*
 
 # Imposta variabili per il binary di Chromium
