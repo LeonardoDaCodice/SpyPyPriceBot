@@ -34,7 +34,7 @@ chrome_options.binary_location = "/usr/bin/chromium"  # Aggiungi questa linea pe
 
 
 # Usa WebDriverManager per scaricare la versione corretta del driver
-service = Service(ChromeDriverManager(version="latest").install())  # Forza l'uso della versione più recente di ChromeDriver
+service = Service(ChromeDriverManager().install())  # Non è necessario specificare la versione
 
 # Inizializza il WebDriver
 driver = webdriver.Chrome(service=service, options=chrome_options)

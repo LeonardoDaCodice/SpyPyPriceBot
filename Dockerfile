@@ -21,7 +21,11 @@ RUN apt-get update && \
     libgbm1 \
     && apt-get clean
 
-# Installa pip, aggiorna le dipendenze e installa i pacchetti Python necessari
+# Crea e attiva un ambiente virtuale
+RUN python -m venv /venv
+ENV PATH="/venv/bin:$PATH"
+
+# Installa pip e le dipendenze Python necessarie nell'ambiente virtuale
 RUN pip install --upgrade pip
 RUN pip install selenium webdriver-manager aiogram python-dotenv requests
 
