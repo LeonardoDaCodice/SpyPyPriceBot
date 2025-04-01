@@ -4,11 +4,10 @@ FROM python:3.9-slim
 # Imposta la working directory nel container
 WORKDIR /app
 
-# Installa le dipendenze di sistema necessarie per Chromium e ChromeDriver
+# Installa le dipendenze di sistema necessarie per Chromium
 RUN apt-get update && \
     apt-get install -y \
     chromium \
-    chromium-driver \
     libnss3 \
     libgdk-pixbuf2.0-0 \
     libatk-bridge2.0-0 \
@@ -22,16 +21,15 @@ RUN apt-get update && \
     libgbm1 \
     && apt-get clean
 
-# Installa il WebDriver manager per gestire la versione del ChromeDriver
+# Installa pip, aggiorna le dipendenze e installa i pacchetti Python necessari
 RUN pip install --upgrade pip
-RUN pip install selenium webdriver-manager aiogram python-dotenv
+RUN pip install selenium webdriver-manager aiogram python-dotenv requests
 
 # Copia il codice del progetto nella working directory del container
 COPY . /app
 
-# Imposta variabili d'ambiente per utilizzare Chromium come browser per Selenium
+# Imposta variabili d'ambiente per Chromium
 ENV CHROME_BIN=/usr/bin/chromium
-ENV CHROME_DRIVER=/usr/lib/chromium-driver/chromium-driver
 
 # Comando per eseguire il bot
 CMD ["python", "spy_price_bot.py"]
