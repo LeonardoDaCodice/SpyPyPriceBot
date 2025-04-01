@@ -1,7 +1,8 @@
 FROM python:3.11-slim
 
-# Installa le dipendenze necessarie per Chromium
-RUN apt-get update && apt-get install -y \
+# Installa una versione specifica di Chromium
+RUN apt-get update && \
+    apt-get install -y \
     wget \
     ca-certificates \
     fonts-liberation \
@@ -9,16 +10,8 @@ RUN apt-get update && apt-get install -y \
     libnss3 \
     lsb-release \
     xdg-utils \
-    chromium \
-    unzip \
-    && rm -rf /var/lib/apt/lists/*
-
-# Scarica e installa la versione corretta di chromedriver (versione 134)
-RUN CHROMIUM_VERSION=$(chromium --version | awk '{print $2}' | cut -d'.' -f1-3) && \
-    wget -q "https://chromedriver.storage.googleapis.com/134.0.5739.90/chromedriver_linux64.zip" -O /chromedriver.zip && \
-    unzip /chromedriver.zip -d /usr/local/bin && \
-    chmod +x /usr/local/bin/chromedriver && \
-    rm /chromedriver.zip
+    chromium=114.* && \
+    apt-get clean
 
 # Imposta variabili per il binary di Chromium
 ENV CHROMIUM_PATH=/usr/bin/chromium
