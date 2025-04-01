@@ -34,11 +34,11 @@ chrome_options.binary_location = "/usr/bin/chromium"  # Aggiungi questa linea pe
 
 
 # Usa WebDriverManager per scaricare la versione corretta del driver
-service = Service(ChromeDriverManager().install())  # Non è necessario specificare la versione
+# Assicurati di scaricare il driver per la versione di Chromium 134
+service = Service(ChromeDriverManager(version="114.0.5735.90").install())  # Impostando la versione esatta di ChromeDriver
 
 # Inizializza il WebDriver
 driver = webdriver.Chrome(service=service, options=chrome_options)
-
 
 # Database SQLite
 conn = sqlite3.connect("prices.db", check_same_thread=False)

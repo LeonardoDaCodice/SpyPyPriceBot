@@ -4,10 +4,10 @@ FROM python:3.9-slim
 # Imposta la working directory nel container
 WORKDIR /app
 
-# Installa le dipendenze di sistema necessarie per Chromium
+# Installa le dipendenze di sistema necessarie per Chromium e ChromeDriver
 RUN apt-get update && \
     apt-get install -y \
-    chromium \
+    chromium=114.0.5735.90-1 \
     libnss3 \
     libgdk-pixbuf2.0-0 \
     libatk-bridge2.0-0 \
@@ -21,11 +21,7 @@ RUN apt-get update && \
     libgbm1 \
     && apt-get clean
 
-# Crea e attiva un ambiente virtuale
-RUN python -m venv /venv
-ENV PATH="/venv/bin:$PATH"
-
-# Installa pip e le dipendenze Python necessarie nell'ambiente virtuale
+# Installa pip, aggiorna le dipendenze e installa i pacchetti Python necessari
 RUN pip install --upgrade pip
 RUN pip install selenium webdriver-manager aiogram python-dotenv requests
 
