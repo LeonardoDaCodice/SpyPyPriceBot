@@ -10,18 +10,23 @@ RUN apt-get update && apt-get install -y \
     lsb-release \
     xdg-utils \
     chromium \
+    unzip \
     && rm -rf /var/lib/apt/lists/*
 
 # Imposta variabili per il binary di Chromium
 ENV CHROMIUM_PATH=/usr/bin/chromium
+ENV PATH="/usr/local/bin:$PATH"
+
+# Scarica e installa ChromeDriver
+RUN CHROMIUM_VERSION=$(chromium --version | awk '{print $2}' | cut -d'.' -f1) && \
+    wget -q "https://chromedriver.storage.googleapis.com/${CHROMIUM_VERSION}.0.5735.90/chromedriver_linux64.zip" -O /chromedriver.zip && \
+    unzip /chromedriver.zip -d /usr/local/bin && \
+    chmod +x /usr/local/bin/chromedriver && \
+    rm /chromedriver.zip
 
 # Installa le dipendenze Python
 COPY requirements.txt /app/requirements.txt
 RUN pip install --no-cache-dir -r /app/requirements.txt
-
-# Installa chromedriver tramite selenium
-RUN pip install --no-cache-dir selenium && \
-    python -c "from selenium import webdriver; driver = webdriver.Chrome(); driver.quit()"
 
 # Copia il codice dell'applicazione
 COPY . /app
