@@ -17,9 +17,13 @@ RUN apt-get update && apt-get install -y \
 ENV CHROMIUM_PATH=/usr/bin/chromium
 ENV PATH="/usr/local/bin:$PATH"
 
-# Scarica l'ultima versione stabile di ChromeDriver
-RUN LATEST_DRIVER=$(wget -qO- https://chromedriver.storage.googleapis.com/LATEST_RELEASE) && \
-    wget -q "https://chromedriver.storage.googleapis.com/${LATEST_DRIVER}/chromedriver_linux64.zip" -O /chromedriver.zip && \
+# Scarica la versione di ChromeDriver compatibile con Chromium
+RUN CHROMIUM_VERSION=$(chromium --version | awk '{print $2}') && \
+    echo "Chromium Version: $CHROMIUM_VERSION" && \
+    CHROMEDRIVER_VERSION=$(wget -qO- "https://googlechromelabs.github.io/chrome-for-testing/latest-patch-versions-per-build.json" | \
+    jq -r ".builds[\"${CHROMIUM_VERSION%%.*}\"].version") && \
+    echo "Downloading ChromeDriver version: $CHROMEDRIVER_VERSION" && \
+    wget -q "https://storage.googleapis.com/chrome-for-testing-public/${CHROMEDRIVER_VERSION}/linux64/chromedriver-linux64.zip" -O /chromedriver.zip && \
     unzip /chromedriver.zip -d /usr/local/bin && \
     chmod +x /usr/local/bin/chromedriver && \
     rm /chromedriver.zip
