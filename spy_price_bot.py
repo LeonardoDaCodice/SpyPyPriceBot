@@ -32,8 +32,9 @@ chrome_options.add_argument("--no-sandbox")
 chrome_options.add_argument("--disable-dev-shm-usage")
 
 # Inizializza il WebDriver
-service = Service(ChromeDriverManager().install())
+service = Service("/usr/lib/chromium-driver/chromium-driver")
 driver = webdriver.Chrome(service=service, options=chrome_options)
+
 
 # Database SQLite
 conn = sqlite3.connect("prices.db", check_same_thread=False)
