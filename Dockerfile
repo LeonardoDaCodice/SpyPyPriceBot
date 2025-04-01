@@ -17,4 +17,4 @@ ENV PYTHONUNBUFFERED 1
 ENV DISPLAY=:99
 
 # Esegui il bot
-CMD ["python", "Spy_price_bot.py"]
+CMD ["python", "spy_price_bot.py"]
