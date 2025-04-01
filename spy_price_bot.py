@@ -33,12 +33,12 @@ chrome_options.add_argument("--disable-dev-shm-usage")
 chrome_options.binary_location = "/usr/bin/chromium"  # Aggiungi questa linea per definire il percorso di Chromium
 
 
-# Usa WebDriverManager per scaricare la versione corretta del driver
-# Assicurati di scaricare il driver per la versione di Chromium 134
-service = Service(ChromeDriverManager(version="114.0.5735.90").install())  # Impostando la versione esatta di ChromeDriver
+# Usa WebDriverManager per scaricare e gestire la versione corretta di ChromeDriver
+service = Service(ChromeDriverManager().install())  # Usa l'installazione automatica di ChromeDriver
 
-# Inizializza il WebDriver
+# Inizializza il WebDriver con le opzioni e il servizio configurato
 driver = webdriver.Chrome(service=service, options=chrome_options)
+
 
 # Database SQLite
 conn = sqlite3.connect("prices.db", check_same_thread=False)
