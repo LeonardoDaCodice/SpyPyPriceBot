@@ -1,5 +1,18 @@
-venv/ 
-".idea/" 
-".idea/" 
-".idea/" 
-".idea/" 
+# Ambiente virtuale
+.venv
+
+# File di configurazione sensibili
+.env
+prices.db
+
+# File di configurazione IDE
+.idea
+
+# File temporanei e cache
+__pycache__/
+*.pyc
+*.pyo
+
+# File di sistema
+.DS_Store
+Thumbs.db
