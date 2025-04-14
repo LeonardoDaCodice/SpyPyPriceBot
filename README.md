@@ -6,6 +6,8 @@ SpyPyPriceBot è un bot Telegram scritto in Python che permette agli utenti di *
 - 💰 Il prezzo di un prodotto varia (in modalità monitoraggio generale)
 - 🎯 Il prezzo scende sotto un prezzo target definito (modalità con target)
 
+![Anteprima del bot](images/Immagine_bot.jpg)
+
 ---
 
 ## 🚀 Funzionalità principali
@@ -79,8 +81,6 @@ SpyPyPriceBot è un bot Telegram scritto in Python che permette agli utenti di *
   - 🎯 Per inserire un prezzo target
 
 > ⚠️ Se il prezzo attuale è già inferiore al target inserito, il bot ti inviterà a inserirne uno più basso.
-
-![Anteprima del bot](images/Immagine_bot.jpg)
 
 ---
 
