@@ -127,3 +127,4 @@ Questo progetto è open source e distribuito sotto la licenza **MIT**.Sentiti li
 ## 📬 Contatti
 
 Hai domande o suggerimenti?Apri una [issue](https://github.com/tuo-utente/SpyPyPriceBot/issues) oppure scrivi direttamente nel repository!
+
