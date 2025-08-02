@@ -1,4 +1,3 @@
-
 # 🕵️ SpyPyPriceBot
 
 SpyPyPriceBot è un bot Telegram scritto in Python che permette agli utenti di **monitorare i prezzi dei prodotti** su **AliExpress** e **Amazon**. Il bot avvisa automaticamente l'utente quando:
@@ -10,7 +9,7 @@ SpyPyPriceBot è un bot Telegram scritto in Python che permette agli utenti di *
 
 ---
 
-## 🚀 Funzionalità principali
+##  Funzionalità principali
 
 - Tracciamento dei prezzi da link di Amazon o AliExpress
 - Due modalità di monitoraggio:
@@ -27,14 +26,14 @@ SpyPyPriceBot è un bot Telegram scritto in Python che permette agli utenti di *
 
 ---
 
-## 🛠 Requisiti
+##  Requisiti
 
 - Python 3.10+
 - Token Telegram Bot (da inserire nel file `.env`)
 
 ---
 
-## 📦 Installazione
+##  Installazione
 
 1. **Clona il repository**:
 
@@ -71,7 +70,7 @@ SpyPyPriceBot è un bot Telegram scritto in Python che permette agli utenti di *
 
 ---
 
-## 🥪 Esempio d’uso
+##  Esempio d’uso
 
 - Avvia il bot su Telegram con il comando `/start`
 - Clicca su **"Monitora un prodotto"**
@@ -89,42 +88,29 @@ SpyPyPriceBot è un bot Telegram scritto in Python che permette agli utenti di *
 ```
 SpyPyPriceBot/
 ├── spy_price_bot.py         # Codice principale del bot
-├── .env                     # File delle variabili ambiente (NON pusharlo!)
+├── .env                     # File che contiene il token del bot, che dovrai creare manualmente (non incluso nel repository perché non va pushato)
 ├── .gitignore               # File di configurazione Git
 ├── requirements.txt         # Dipendenze da installare
 ├── README.md                # Questo file
 └── prices.db                # Database SQLite generato automaticamente
 ```
 
----
-
-## ❌ Cosa non viene tracciato su GitHub
-
-Assicurati che `.gitignore` contenga:
-
-```
-.venv/
-.env
-prices.db
-.idea/
-__pycache__/
-```
 
 ---
 
-## 🧐 Autore
+##  Autore
 
-**Salvatore Forte** Progetto personale per apprendere lo sviluppo Python, l'utilizzo di bot Telegram e tecniche di web scraping.Creato con ❤️ per la pratica, l'apprendimento e la condivisione.
+**Salvatore Forte** Progetto personale per apprendere lo sviluppo Python, l'utilizzo di bot Telegram e tecniche di web scraping.
 
 ---
 
-## 📝 Licenza
+##  Licenza
 
 Questo progetto è open source e distribuito sotto la licenza **MIT**.Sentiti libero di usarlo, modificarlo e contribuire!
 
 ---
 
-## 📬 Contatti
+##  Contatti
 
 Hai domande o suggerimenti?Apri una [issue](https://github.com/tuo-utente/SpyPyPriceBot/issues) oppure scrivi direttamente nel repository!
 
